@@ -203,16 +203,47 @@ THIRD_PARTY_APPS = (
     # Asynchronous task queue:
     'djcelery',
 
+    ## userena
+    'userena',
+    'guardian',
+    'easy_thumbnails',
+
 
 )
+
+
 
 LOCAL_APPS = (
     'apps.blogengine',
+    'apps.accounts'
 )
+
+EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
+
+# Settings for userarana
+ANONYMOUS_USER_ID = -1
+
+AUTH_PROFILE_MODULE = 'accounts.MyProfile'
+
+LOGIN_REDIRECT_URL = '/accounts/%(username)s/'
+LOGIN_URL = '/accounts/signin/'
+LOGOUT_URL = '/accounts/signout/'
+
+SOUTH_MIGRATION_MODULES = {
+        'easy_thumbnails': 'easy_thumbnails.south_migrations',
+}
+
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 ########## END APP CONFIGURATION
+
+### User Arena Settings ########
+AUTHENTICATION_BACKENDS = (
+    'userena.backends.UserenaAuthenticationBackend',
+    'guardian.backends.ObjectPermissionBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 
 ########## LOGGING CONFIGURATION

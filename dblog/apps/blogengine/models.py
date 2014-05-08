@@ -16,7 +16,7 @@ class Category(models.Model):
         super(Category, self).save()
 
     def get_absolute_url(self):
-        return "/category/%s/" % self.slug
+        return "/blog/category/%s/" % self.slug
 
     def __unicode__(self):
         return self.name
@@ -36,7 +36,7 @@ class Tag(models.Model):
         super(Tag, self).save()
 
     def get_absolute_url(self):
-        return '/tag/%s/' % self.slug
+        return '/blog/tag/%s/' % self.slug
 
     def __unicode__(self):
         return self.name
@@ -53,7 +53,7 @@ class Post(models.Model):
     tags = models.ManyToManyField(Tag)
 
     def get_absolute_url(self):
-        return "/%s/%s/%s" % (self.pub_date.year, self.pub_date.month, self.slug)
+        return "/blog/%s/%s/%s" % (self.pub_date.year, self.pub_date.month, self.slug)
 
     def __unicode__(self):
         return self.title
