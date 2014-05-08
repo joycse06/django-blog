@@ -187,7 +187,7 @@ DJANGO_APPS = (
 
     # Admin skin
     'suit',
-    
+
     # Admin panel and documentation:
     'django.contrib.admin',
     'django.contrib.admindocs',
