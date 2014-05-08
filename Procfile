@@ -1,2 +1,2 @@
-web: gunicorn core.wsgi -b "0.0.0.0:$PORT" -w 3
+web: newrelic-admin run-program gunicorn -c gunicorn.py.ini wsgi:application
 
