@@ -1,12 +1,11 @@
 {% extends "blogengine/includes/base.html" %}
 
-    {% load custom_markdown %}
 
     {% block content %}
         <div class="post">
             <h1>{{ object.title }}</h1>
             <h3>{{ object.pub_date }}</h3>
-            {{ object.text|custom_markdown }}
+            {{ object.text }}
             Category: <a href="{{ post.category.get_absolute_url }}">{{ post.category.name }}</a>
             <br/>
             <br/>
