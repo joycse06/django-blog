@@ -3,6 +3,9 @@ from django.views.generic import ListView, DetailView
 from dblog.apps.blogengine.models import Post, Category, Tag
 from dblog.apps.blogengine.views import CategoryListView, TagListView
 
+# Import the receiver of sign_up_complete signal
+import receivers
+
 urlpatterns = patterns('',
                        # Index
                        url('^(?P<page>\d+)?/?$', ListView.as_view(
