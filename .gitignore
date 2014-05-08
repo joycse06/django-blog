@@ -19,3 +19,4 @@ celerybeat-schedule
 
 .idea/
 .DS_Store
+apps/blogengine/static/bower_components
