@@ -14,6 +14,7 @@ urlpatterns = patterns('',
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     (r'^grappelli/', include('grappelli.urls')), # grappelli URLS
     url(r'^admin/', include(admin.site.urls)),
+    url(r'', include('dblog.apps.accounts.urls')),
     (r'^accounts/', include('userena.urls')),
     url(r'^blog/', include('dblog.apps.blogengine.urls')),
     url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': STATIC_ROOT}),
