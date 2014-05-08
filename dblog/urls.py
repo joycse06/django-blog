@@ -12,6 +12,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Admin panel and documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    (r'^grappelli/', include('grappelli.urls')), # grappelli URLS
     url(r'^admin/', include(admin.site.urls)),
     (r'^accounts/', include('userena.urls')),
     url(r'^blog/', include('dblog.apps.blogengine.urls')),

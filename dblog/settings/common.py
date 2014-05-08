@@ -185,8 +185,18 @@ DJANGO_APPS = (
     # Useful template tags:
     'django.contrib.humanize',
 
+    # Redactor Editor
+    'redactor',
     # Admin skin
-    'suit',
+    'grappelli',
+
+    # Page Down Editor for Backend
+    # 'pagedown',
+
+    # Mark down parser
+    # 'markdown_deux',
+
+
 
     # Admin panel and documentation:
     'django.contrib.admin',
