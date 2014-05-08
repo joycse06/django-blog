@@ -26,7 +26,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': normpath(join(DJANGO_ROOT, 'default.db')),
+        'NAME': normpath(join(DJANGO_ROOT, 'dblog.db')),
         'USER': '',
         'PASSWORD': '',
         'HOST': '',
@@ -59,6 +59,7 @@ CELERY_EAGER_PROPAGATES_EXCEPTIONS = True
 # See: https://github.com/django-debug-toolbar/django-debug-toolbar#installation
 INSTALLED_APPS += (
     'debug_toolbar',
+
 )
 
 # See: https://github.com/django-debug-toolbar/django-debug-toolbar#installation
