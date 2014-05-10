@@ -1,0 +1,52 @@
+{% extends 'blogengine/includes/base.html' %}
+{% load i18n %}
+{% load form_css %}
+{% block content %}
+<div class="row im-centered">
+   <form role="form" class="" method="post">{% csrf_token %}
+    <fieldset>
+        <legend>{% trans "Sign In" %}</legend>
+        {% for field in form %}
+            {% if field.errors %}
+                {% if field.name == 'remember_me' %}
+                   <div class="checkbox">
+                        <label>
+                          {{ field }} {{ field.label }}
+                        </label>
+                        <p class="help-block">{% for error in  field.errors %}{{ error }}{% endfor %}</p>
+                    </div>
+                {% else %}
+                    <div class="form-group">
+                        <label for="id_{{ field.name }}">{{ field.label }}</label>
+                        {{ field|addcss:"form-control" }}
+                        <p class="help-block">{% for error in  field.errors %}{{ error }}{% endfor %}</p>
+                    </div>
+                {% endif %}
+            {% else %}
+                {% if field.name == 'remember_me' %}
+                    <div class="checkbox">
+                        <label>
+                          {{ field }} {{ field.label }}
+                        </label>
+                        <p class="help-block"><small>{{ field.help_text }}</small></p>
+                    </div>
+                {% else %}
+                    <div class="form-group">
+                        <label class="">{{ field.label }}</label>
+                        {{ field|addcss:"form-control" }}
+                            {% if field.help_text %}
+                                <p class="help-inline"><small>{{ field.help_text }}</small></p>
+                            {% endif %}
+
+                    </div>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    </fieldset>
+    <br/>
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary" >Submit</button>
+    </div>
+</form>
+</div>
+{% endblock %}

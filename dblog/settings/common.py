@@ -190,6 +190,9 @@ DJANGO_APPS = (
     # Admin skin
     'grappelli',
 
+    # Django bootstrap form
+    'crispy_forms',
+
     # Page Down Editor for Backend
     # 'pagedown',
 
@@ -240,8 +243,11 @@ LOGIN_URL = '/accounts/signin/'
 LOGOUT_URL = '/accounts/signout/'
 USERENA_ACTIVATION_REQUIRED = False
 SOUTH_MIGRATION_MODULES = {
-        'easy_thumbnails': 'easy_thumbnails.south_migrations',
+    'easy_thumbnails': 'easy_thumbnails.south_migrations',
 }
+
+# Settings for Django Crispy Forms
+CRISPY_TEMPLATE_PACK = 'bootstrap'
 
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps

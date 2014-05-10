@@ -1,0 +1,65 @@
+{% extends 'blogengine/includes/base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Signup" %}{% endblock %}
+{#{% load crispy_forms_tags %}#}
+{% load form_css %}
+{% block content %}
+<div class="row im-centered">
+   <form role="form" class="" method="post">{% csrf_token %}
+    <fieldset>
+        <legend>{% trans "User Signup" %}</legend>
+        {% for field in form %}
+            {% if field.errors %}
+
+                <div class="form-group">
+                    <label for="id_{{ field.name }}">{{ field.label }}</label>
+                    {{ field|addcss:"form-control" }}
+                    <p class="help-block">{% for error in  field.errors %}{{ error }}{% endfor %}</p>
+                </div>
+
+            {% else %}
+                <div class="form-group">
+                    <label class="">{{ field.label }}</label>
+                    {{ field|addcss:"form-control" }}
+                        {% if field.help_text %}
+                            <p class="help-inline"><small>{{ field.help_text }}</small></p>
+                        {% endif %}
+
+                </div>
+            {% endif %}
+        {% endfor %}
+    </fieldset>
+    <br/>
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary" >Submit</button>
+    </div>
+</form>
+</div>
+{% endblock %}
+
+{% block joy %}
+<form action="" method="post">
+  {% csrf_token %}
+  <fieldset>
+    <legend>{% trans "Signup" %}</legend>
+    {{ form.non_field_errors }}
+    {% for field in form %}
+        {{ field.name }}
+    {{ field.errors }}
+    {% comment %} Displaying checkboxes differently {% endcomment %}
+    {% if field.name == 'tos' %}
+        <p class="checkbox">
+        <label for="id_{{ field.name }}">{{ field }} {{ field.label }}</label>
+        </p>
+    {% else %}
+        <p>
+        {{ field.label_tag }}
+        {{ field }}
+        </p>
+    {% endif %}
+    {% endfor %}
+  </fieldset>
+  <input type="submit" value="{% trans "Signup"%}" />
+</form>
+{% endblock %}
